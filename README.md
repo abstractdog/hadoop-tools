@@ -1,8 +1,5 @@
 # hadoop-tools
 
-Simple tool to download a sample csv and load into hive.
-Original data source: https://www.sample-videos.com/csv/
-
 Usage:
 1. Clone this repo
 ```
