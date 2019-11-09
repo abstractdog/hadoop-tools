@@ -6,7 +6,8 @@ Usage:
 bash <(curl -s https://raw.githubusercontent.com/abstractdog/hadoop-tools/master/install.sh) 
 ```
 
-3. Use it  
+2. Use it  
+(relogin to the host)
 ```
 hdfs-shell.sh
 ```
