@@ -1,14 +1,11 @@
 # hadoop-tools
 
 Usage:
-1. Clone this repo
+1. Install
 ```
-git clone https://github.com/abstractdog/hadoop-tools.git
+bash <(curl -s https://raw.githubusercontent.com/abstractdog/hadoop-tools/master/install.sh) 
 ```
-2. Init it
-```
-source hadoop-tools/init.sh
-```
+
 3. Use it  
 ```
 hdfs-shell.sh
