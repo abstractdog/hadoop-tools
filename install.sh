@@ -4,7 +4,7 @@ git --version > /dev/null
 
 git clone https://github.com/abstractdog/hadoop-tools
 cd hadoop-tools
-./init.sh
+source ./init.sh
 
 if [[ -f ~/.bashrc ]]; then
     echo "source $PWD/init.sh" >> ~/.bashrc
