@@ -34,8 +34,19 @@ function yarn_app_container_list(){
   yarn logs -applicationId $APP -show_application_log_info
 }
 
+function yarn_list_hive_applications(){
+  yarn application -list | awk '$2 ~ "HIVE" { print $1,$2 }'
+}
+
 function yarn_kill_hive_applications(){
-  yarn application -list | awk '$2 ~ "HIVE" { print $1 }' | xargs -I {} yarn application -kill {}
+	yarn_list_hive_applications
+
+	read -p "Are you sure to kill all hive/tez yarn applications (AMs) [y/n]? " -n 1 -r
+	echo    # (optional) move to a new line
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		yarn application -list | awk '$2 ~ "HIVE" { print $1 }' | xargs -I {} yarn application -kill {}
+	fi
 }
 
 function yarn_list_llap_applications(){
@@ -43,6 +54,12 @@ function yarn_list_llap_applications(){
 }
 
 function yarn_kill_llap_applications(){
-  yarn_list_llap_applications
-  yarn application -list | awk '$2 ~ "llap" { print $1 }' | xargs -I {} yarn application -kill {}
+	yarn_list_llap_applications
+
+	read -p "Are you sure to kill all llap yarn applications (daemons) [y/n]? " -n 1 -r
+	echo    # (optional) move to a new line
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		yarn application -list | awk '$2 ~ "llap" { print $1 }' | xargs -I {} yarn application -kill {}
+	fi
 }
