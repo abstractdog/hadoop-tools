@@ -1,4 +1,8 @@
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+if [ -n "$ZSH_VERSION" ]; then
+   SCRIPT_DIR="${0:a:h}"
+elif [ -n "$BASH_VERSION" ]; then
+   SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+fi
 
 export PATH=$PATH:$SCRIPT_DIR/hdfs-shell/bin
 export PATH=$PATH:$SCRIPT_DIR/yarn
