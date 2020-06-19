@@ -4,6 +4,8 @@ export PATH=$PATH:$SCRIPT_DIR/hdfs-shell/bin
 export PATH=$PATH:$SCRIPT_DIR/yarn
 export PATH=$PATH:$SCRIPT_DIR/hive
 
+export ORC_UBER_JAR=$SCRIPT_DIR/orc/orc-tools-1.6.3-uber.jar
+
 #this script is called from .bashrc, don't use echo as it can break scp
 #https://bugzilla.redhat.com/show_bug.cgi?id=20527
 
@@ -22,3 +24,4 @@ fi
 
 source $SCRIPT_DIR/hive/hive_functions.sh
 source $SCRIPT_DIR/yarn/yarn_functions.sh
+source $SCRIPT_DIR/orc/orc_functions.sh
