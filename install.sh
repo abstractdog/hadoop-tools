@@ -9,6 +9,9 @@ source ./init.sh
 if [[ -f ~/.bashrc ]]; then
     echo "source $PWD/init.sh" >> ~/.bashrc
     echo "hadoop-tools initializer script is written into .bashrc"
+elif [[ -f ~/.zshrc ]]; then
+    echo "source $PWD/init.sh" >> ~/.zshrc
+    echo "hadoop-tools initializer script is written into .zshrc"
 else
-    echo "~/.bashrc is not found, you have to include \"source $PWD/init.sh\" somewhere else"
+    echo "nor ~/.bashrc neither ~/.zshrc was not found, you have to include \"source $PWD/init.sh\" somewhere else"
 fi
