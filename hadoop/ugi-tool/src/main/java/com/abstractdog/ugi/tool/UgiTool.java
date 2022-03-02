@@ -8,14 +8,23 @@ import org.apache.hadoop.security.token.Token;
 
 public class UgiTool {
   public static void main(String[] args) throws Exception {
+    System.out
+        .println(String.format("UserGroupInformation.isSecurityEnabled: %s", UserGroupInformation.isSecurityEnabled()));
+    System.out.println(
+        String.format("UserGroupInformation.isLoginKeytabBased: %s", UserGroupInformation.isLoginKeytabBased()));
+    System.out.println(
+        String.format("UserGroupInformation.isLoginTicketBased: %s", UserGroupInformation.isLoginTicketBased()));
+
     UserGroupInformation ugiCurrent = UserGroupInformation.getCurrentUser();
     UserGroupInformation ugiLogin = UserGroupInformation.getLoginUser();
 
-    System.out.println("ugiCurrent: " + ugiCurrent + ", credentials:"
-        + UgiTool.getCredentialsInfo(ugiCurrent.getCredentials(), "ugiCurrent") + ", tokens: "
-        + ugiCurrent.getTokens());
-    System.out.println("ugiLogin: " + ugiLogin + ", credentials:"
-        + UgiTool.getCredentialsInfo(ugiLogin.getCredentials(), "ugiLogin") + ", tokens: " + ugiLogin.getTokens());
+    System.out.println(String.format("ugiCurrent: %s, hasKerberosCredentials: %s, credentials: %s, tokens: %s",
+        ugiCurrent, ugiCurrent.hasKerberosCredentials(),
+        UgiTool.getCredentialsInfo(ugiCurrent.getCredentials(), "ugiCurrent"), ugiCurrent.getTokens()));
+
+    System.out.println(String.format("ugiLogin: %s, hasKerberosCredentials: %s, credentials: %s, tokens: %s", ugiLogin,
+        ugiLogin.hasKerberosCredentials(), UgiTool.getCredentialsInfo(ugiLogin.getCredentials(), "ugiLogin"),
+        ugiLogin.getTokens()));
   }
 
   public static String getCredentialsInfo(Credentials credentials, String identifier) {
