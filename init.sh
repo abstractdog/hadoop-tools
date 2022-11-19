@@ -26,6 +26,8 @@ if [ -z "$JAVA_HOME" ]; then
 	export JAVA_HOME=$(dirname $(dirname $(readlink -f $JAVA_EXEC)))
 fi
 
+export PATH=$PATH:$JAVA_HOME/bin
+
 source $SCRIPT_DIR/hive/hive_functions.sh
 source $SCRIPT_DIR/yarn/yarn_functions.sh
 source $SCRIPT_DIR/orc/orc_functions.sh
